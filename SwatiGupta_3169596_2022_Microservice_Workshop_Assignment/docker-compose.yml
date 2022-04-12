@@ -28,7 +28,7 @@ services:
   api-gateway:
     container_name: assignment-api-gateway
     depends_on:
-        - consul-server
+      - consul-server
     networks:
       - consul
     build:

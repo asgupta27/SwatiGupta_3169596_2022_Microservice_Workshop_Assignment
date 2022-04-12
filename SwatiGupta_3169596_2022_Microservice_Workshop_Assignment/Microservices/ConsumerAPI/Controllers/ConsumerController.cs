@@ -1,4 +1,6 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using ConsumerAPI.Entities;
+using ConsumerAPI.Repositories;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using System;
 using System.Collections.Generic;
@@ -11,6 +13,24 @@ namespace ConsumerAPI.Controllers
     [Route("[controller]")]
     public class ConsumerController : ControllerBase
     {
-      
+        private readonly ConsumerRepository consumerRepository;
+        public ConsumerController()
+        {
+            consumerRepository = new ConsumerRepository();
+        }
+
+        [HttpGet]
+        public async Task<ActionResult<List<Consumer>>> GetConsumers()
+        {
+            var users = consumerRepository.GetConsumers();
+            return Ok(users);
+        }
+
+        [HttpGet("{id}")]
+        public async Task<ActionResult<Consumer>> GetConsumer(int id)
+        {
+            var user = consumerRepository.GetConsumerById(id);
+            return Ok(user);
+        }      
     }
 }
