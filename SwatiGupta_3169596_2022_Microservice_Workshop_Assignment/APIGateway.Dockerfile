@@ -2,7 +2,7 @@
 
 FROM mcr.microsoft.com/dotnet/sdk:5.0 AS build
 WORKDIR /microservices
-COPY microservices .
+COPY Microservices .
 
 RUN dotnet restore "/Microservices/APIGateway/APIGateway.csproj"
 RUN dotnet publish "/Microservices/APIGateway/APIGateway.csproj" -c Release -o /out
