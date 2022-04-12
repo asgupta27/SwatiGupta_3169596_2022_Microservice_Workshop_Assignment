@@ -30,7 +30,7 @@ services:
     depends_on:
       - consul-server
     networks:
-      - consul
+      - assignment
     build:
       context: .
       dockerfile: APIGateway.Dockerfile
@@ -45,7 +45,7 @@ services:
     depends_on:
         - consul-server
     networks:
-      - consul
+      - assignment
     build:
       context: .
       dockerfile: ConsumerAPI.Dockerfile
