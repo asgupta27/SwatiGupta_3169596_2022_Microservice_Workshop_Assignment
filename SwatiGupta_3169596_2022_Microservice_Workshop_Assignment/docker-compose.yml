@@ -1,0 +1,61 @@
+version: "3.4"
+services:
+  consul-server:
+    image: hashicorp/consul:1.10.0
+    container_name: consul-server
+    restart: always
+    hostname: service-registry
+    volumes:
+     - ./consul/server.json:/consul/config/server.json:ro
+    networks:
+      - consul
+    ports:
+      - "8500:8500"
+      - "8600:8600/tcp"
+      - "8600:8600/udp"
+    command: "agent"
+
+  consul-client:
+    image: hashicorp/consul:1.10.0
+    container_name: consul-client
+    restart: always
+    volumes:
+     - ./consul/client.json:/consul/config/client.json:ro
+    networks:
+      - assignment
+    command: "agent"
+  
+  api-gateway:
+    container_name: assignment-api-gateway
+    depends_on:
+        - consul-server
+    networks:
+      - consul
+    build:
+      context: .
+      dockerfile: APIGateway.Dockerfile
+    environment:
+     - ASPNETCORE_ENVIRONMENT=Docker
+    ports: 
+      - "4002:80" 
+      
+  consumer-api:
+    container_name: assignment-consumer-api
+    hostname: consumerApi
+    depends_on:
+        - consul-server
+    networks:
+      - consul
+    build:
+      context: .
+      dockerfile: ConsumerAPI.Dockerfile
+    environment:
+     - ASPNETCORE_ENVIRONMENT=Development
+     - ServiceConfig__ServiceDiscoveryAddress=http://service-registry:8500/
+     - ServiceConfig__ServiceAddress=http://consumerApi
+    ports: 
+      - "4011:80"
+      
+networks:
+  assignment:
+    driver: bridge
