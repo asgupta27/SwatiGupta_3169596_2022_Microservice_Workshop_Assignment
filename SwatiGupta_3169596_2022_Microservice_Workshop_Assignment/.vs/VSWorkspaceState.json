@@ -1,12 +1,10 @@
 {
   "ExpandedNodes": [
     "",
+    "\\consul",
     "\\Microservices",
-    "\\Microservices\\APIGateway",
-    "\\Microservices\\ConsumerAPI",
-    "\\Microservices\\ConsumerAPI\\Controllers",
-    "\\Microservices\\ConsumerAPI\\Repositories"
+    "\\Microservices\\APIGateway"
   ],
-  "SelectedNode": "\\Microservices\\ConsumerAPI\\Controllers\\ConsumerController.cs",
+  "SelectedNode": "\\Microservices\\APIGateway",
   "PreviewInSolutionExplorer": false
 }

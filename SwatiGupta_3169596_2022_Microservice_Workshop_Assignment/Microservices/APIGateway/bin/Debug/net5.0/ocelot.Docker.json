@@ -1,0 +1,24 @@
+{
+  "Routes": [
+    {
+      "ServiceName": "ConsumerAPI",
+      "DownstreamPathTemplate": "/api/v1/getconsumer/{id}",
+      "DownstreamScheme": "http",
+      "UpstreamPathTemplate": "/consumer/{id}",
+      "UpstreamHttpMethod": [ "GET" ]
+    },
+    {
+      "ServiceName": "ConsumerAPI",
+      "DownstreamPathTemplate": "/api/v1/getconsumers",
+      "DownstreamScheme": "http",
+      "UpstreamPathTemplate": "/consumers",
+      "UpstreamHttpMethod": [ "GET" ]
+    }
+  ],
+  "GlobalConfiguration": {
+    "ServiceDiscoveryProvider": {
+      "Host": "service-registry",
+      "Port": 8500
+    }
+  }
+}
