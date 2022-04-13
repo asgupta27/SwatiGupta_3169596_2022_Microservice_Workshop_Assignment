@@ -2,23 +2,22 @@
   "Routes": [
     {
       "ServiceName": "ConsumerAPI",
-      "DownstreamPathTemplate": "/api/v1/getconsumer/{id}",
+      "DownstreamPathTemplate": "/api/v1/consumer/{id}",
       "DownstreamScheme": "http",
       "UpstreamPathTemplate": "/consumer/{id}",
       "UpstreamHttpMethod": [ "GET" ]
     },
     {
       "ServiceName": "ConsumerAPI",
-      "DownstreamPathTemplate": "/api/v1/getconsumers",
+      "DownstreamPathTemplate": "/api/v1/consumer",
       "DownstreamScheme": "http",
       "UpstreamPathTemplate": "/consumers",
       "UpstreamHttpMethod": [ "GET" ]
     }
   ],
   "GlobalConfiguration": {
-    "ServiceDiscoveryProvider": {
-      "Host": "localhost",
-      "Port": 8500
-    }
+    "Host": "consul",
+    "Port": "8500",
+    "Type": "Consul"
   }
 }

@@ -9,7 +9,7 @@
     },
     {
       "ServiceName": "ConsumerAPI",
-      "DownstreamPathTemplate": "/api/v1/consumers",
+      "DownstreamPathTemplate": "/api/v1/consumer",
       "DownstreamScheme": "http",
       "UpstreamPathTemplate": "/consumers",
       "UpstreamHttpMethod": [ "GET" ]
