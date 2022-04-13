@@ -10,7 +10,7 @@ using System.Threading.Tasks;
 namespace ConsumerAPI.Controllers
 {
     [ApiController]
-    [Route("[controller]")]
+    [Route("api/v1/[controller]")]
     public class ConsumerController : ControllerBase
     {
         private readonly ConsumerRepository consumerRepository;
