@@ -1,8 +1,22 @@
 {
   "version": 2,
-  "dgSpecHash": "3VgVaTggFZiLSMoO4AVBikuD1zJXuhthhXRccETtHXQ4WLLPmva6tY3/vBVPff9cVAVVjXmOfbHvIseiJj/j0A==",
+  "dgSpecHash": "Z4ECNDoh6XG9KYivtgRCUm92bhqO2WoRJcmOXcUh8+T447PyUEptih9r7AlTeJqtjr/kYXAcjn+ZhXz6lhPicg==",
   "success": true,
   "projectFilePath": "D:\\StudyProjects\\AssignmentProject\\SwatiGupta_3169596_2022_Microservice_Workshop_Assignment\\Microservices\\APIGateway\\APIGateway.csproj",
-  "expectedPackageFiles": [],
+  "expectedPackageFiles": [
+    "C:\\Users\\swatigupta01\\.nuget\\packages\\consul\\1.6.1.1\\consul.1.6.1.1.nupkg.sha512",
+    "C:\\Users\\swatigupta01\\.nuget\\packages\\fluentvalidation\\9.3.0\\fluentvalidation.9.3.0.nupkg.sha512",
+    "C:\\Users\\swatigupta01\\.nuget\\packages\\microsoft.aspnetcore.jsonpatch\\5.0.0\\microsoft.aspnetcore.jsonpatch.5.0.0.nupkg.sha512",
+    "C:\\Users\\swatigupta01\\.nuget\\packages\\microsoft.aspnetcore.middlewareanalysis\\5.0.0\\microsoft.aspnetcore.middlewareanalysis.5.0.0.nupkg.sha512",
+    "C:\\Users\\swatigupta01\\.nuget\\packages\\microsoft.aspnetcore.mvc.newtonsoftjson\\5.0.0\\microsoft.aspnetcore.mvc.newtonsoftjson.5.0.0.nupkg.sha512",
+    "C:\\Users\\swatigupta01\\.nuget\\packages\\microsoft.csharp\\4.7.0\\microsoft.csharp.4.7.0.nupkg.sha512",
+    "C:\\Users\\swatigupta01\\.nuget\\packages\\microsoft.extensions.dependencyinjection.abstractions\\5.0.0\\microsoft.extensions.dependencyinjection.abstractions.5.0.0.nupkg.sha512",
+    "C:\\Users\\swatigupta01\\.nuget\\packages\\microsoft.extensions.diagnosticadapter\\3.1.10\\microsoft.extensions.diagnosticadapter.3.1.10.nupkg.sha512",
+    "C:\\Users\\swatigupta01\\.nuget\\packages\\newtonsoft.json\\12.0.2\\newtonsoft.json.12.0.2.nupkg.sha512",
+    "C:\\Users\\swatigupta01\\.nuget\\packages\\newtonsoft.json.bson\\1.0.2\\newtonsoft.json.bson.1.0.2.nupkg.sha512",
+    "C:\\Users\\swatigupta01\\.nuget\\packages\\ocelot\\17.0.0\\ocelot.17.0.0.nupkg.sha512",
+    "C:\\Users\\swatigupta01\\.nuget\\packages\\ocelot.provider.consul\\17.0.0\\ocelot.provider.consul.17.0.0.nupkg.sha512",
+    "C:\\Users\\swatigupta01\\.nuget\\packages\\system.diagnostics.diagnosticsource\\4.7.1\\system.diagnostics.diagnosticsource.4.7.1.nupkg.sha512"
+  ],
   "logs": []
 }
