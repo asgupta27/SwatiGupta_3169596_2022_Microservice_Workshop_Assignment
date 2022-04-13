@@ -27,7 +27,7 @@ services:
     environment:
      - ASPNETCORE_ENVIRONMENT=Docker
     ports: 
-      - "4002:80" 
+      - "4012:80" 
       
   consumer-api:
     container_name: assignment-consumer-api
