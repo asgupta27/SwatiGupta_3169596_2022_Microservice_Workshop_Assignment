@@ -13,6 +13,34 @@
       "DownstreamScheme": "http",
       "UpstreamPathTemplate": "/consumers",
       "UpstreamHttpMethod": [ "GET" ]
+    },
+    {
+      "ServiceName": "AdminAPI",
+      "DownstreamPathTemplate": "/api/v1/admin/service/{id}",
+      "DownstreamScheme": "http",
+      "UpstreamPathTemplate": "/service/{id}",
+      "UpstreamHttpMethod": [ "GET" ]
+    },
+    {
+      "ServiceName": "AdminAPI",
+      "DownstreamPathTemplate": "/api/v1/admin/service",
+      "DownstreamScheme": "http",
+      "UpstreamPathTemplate": "/services",
+      "UpstreamHttpMethod": [ "GET" ]
+    },
+    {
+      "ServiceName": "ServiceProviderAPI",
+      "DownstreamPathTemplate": "/api/v1/serviceprovider?{queryparam}",
+      "DownstreamScheme": "http",
+      "UpstreamPathTemplate": "/serviceprovider?{queryparam}",
+      "UpstreamHttpMethod": [ "GET" ]
+    },
+    {
+      "ServiceName": "BookingAPI",
+      "DownstreamPathTemplate": "/api/v1/booking/bookservice",
+      "DownstreamScheme": "http",
+      "UpstreamPathTemplate": "/bookservice",
+      "UpstreamHttpMethod": [ "POST" ]
     }
   ],
   "GlobalConfiguration": {

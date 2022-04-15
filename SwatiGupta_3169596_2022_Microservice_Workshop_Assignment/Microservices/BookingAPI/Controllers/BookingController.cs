@@ -1,6 +1,7 @@
 ﻿using BookingAPI.Entities;
 using BookingAPI.Service;
 using Microsoft.AspNetCore.Mvc;
+using System;
 using System.Net;
 
 namespace BookingAPI.Controllers
@@ -28,12 +29,14 @@ namespace BookingAPI.Controllers
         [Route("bookService")]
         public ActionResult BookServiceRequest([FromBody] BookingServiceRequest bookingServiceRequest)
         {
+            Console.WriteLine("this is called");
             if(bookingServiceRequest == null)
             {
                 return BadRequest();
             }
             else
             {
+                Console.WriteLine($"this is called locationid- { bookingServiceRequest.LocationId} - serviceid - {bookingServiceRequest.ServiceId}" );
                 var serviceProviders = this.bookingService.GetServiceProvidersByServiceIdAndLocation(bookingServiceRequest.ServiceId, bookingServiceRequest.LocationId);
                 return Ok(serviceProviders);
             }
