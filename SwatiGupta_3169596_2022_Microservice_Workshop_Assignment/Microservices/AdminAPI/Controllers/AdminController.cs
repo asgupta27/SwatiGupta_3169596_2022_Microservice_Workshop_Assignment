@@ -20,13 +20,15 @@ namespace AdminAPI.Controllers
         }
 
         [HttpGet]
+        [Route("service")]
         public async Task<ActionResult<List<Service>>> GetServices()
         {
             var services = serviceRepository.GetServices();
             return Ok(services);
         }
 
-        [HttpGet("{id}")]
+        [HttpGet]
+        [Route("service/{id}")]
         public async Task<ActionResult<Service>> GetService(int id)
         {
             var service = serviceRepository.GetServiceById(id);
