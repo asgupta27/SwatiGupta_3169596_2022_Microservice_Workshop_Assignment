@@ -55,7 +55,24 @@ services:
      - ServiceConfig__ServiceAddress=http://consumerApi
     ports: 
       - "4011:80"
-      
+
+  admin-api:
+    container_name: assignment-admin-api
+    hostname: adminApi
+    depends_on:
+        - consul-server
+    networks:
+      - assignment
+    build:
+      context: .
+      dockerfile: AdminAPI.Dockerfile
+    environment:
+     - ASPNETCORE_ENVIRONMENT=Development
+     - ServiceConfig__ServiceDiscoveryAddress=http://service-registry:8500/
+     - ServiceConfig__ServiceAddress=http://adminApi
+    ports: 
+      - "4013:80" 
+
 networks:
   assignment:
     driver: bridge
