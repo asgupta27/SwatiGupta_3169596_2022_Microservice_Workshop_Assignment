@@ -1,11 +1,6 @@
 ﻿using BookingAPI.Entities;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.Extensions.Logging;
-using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.Net;
-using System.Threading.Tasks;
 
 namespace BookingAPI.Controllers
 {
@@ -13,17 +8,31 @@ namespace BookingAPI.Controllers
     [ApiController]
     public class BookingController : ControllerBase
     {
+        /// <summary>
+        /// Booking controller
+        /// </summary>
         public BookingController()
         {
 
         }
         
+        /// <summary>
+        /// Recevice booking request
+        /// </summary>
+        /// <param name="bookServiceRequest"></param>
         [HttpPost]
         [ProducesResponseType((int)HttpStatusCode.Accepted)]
         [ProducesResponseType((int)HttpStatusCode.BadRequest)]
-        public void BookServiceRequest([FromBody] BookServiceRequest bookServiceRequest)
+        public ActionResult BookServiceRequest([FromBody] BookServiceRequest bookServiceRequest)
         {
-            
+            if(bookServiceRequest == null)
+            {
+                return BadRequest();
+            }
+            else
+            {
+                return Accepted();
+            }
         }
     }
 }

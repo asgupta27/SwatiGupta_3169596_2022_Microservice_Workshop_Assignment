@@ -27,6 +27,13 @@
       "DownstreamScheme": "http",
       "UpstreamPathTemplate": "/services",
       "UpstreamHttpMethod": [ "GET" ]
+    },
+    {
+      "ServiceName": "ServiceProviderAPI",
+      "DownstreamPathTemplate": "/api/v1/serviceprovider/{queryparam}",
+      "DownstreamScheme": "http",
+      "UpstreamPathTemplate": "/serviceprovider/{queryparam}",
+      "UpstreamHttpMethod": [ "GET" ]
     }
   ],
   "GlobalConfiguration": {

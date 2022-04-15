@@ -10,8 +10,8 @@ namespace ServiceProviderAPI.Controllers
     [Route("api/v1/[controller]")]
     public class ServiceProviderController : ControllerBase
     {
-        public ServiceProviderRepository serviceProviderRepository;
-        public ServiceProviderController(ServiceProviderRepository serviceProviderRepository)
+        public IServiceProviderRepository serviceProviderRepository;
+        public ServiceProviderController(IServiceProviderRepository serviceProviderRepository)
         {
             this.serviceProviderRepository = serviceProviderRepository;
         }

@@ -5,7 +5,7 @@ using System.Threading.Tasks;
 
 namespace ServiceProviderAPI.Repositories
 {
-    public class ServiceProviderRepository
+    public class ServiceProviderRepository : IServiceProviderRepository
     {
         private static readonly IList<ServiceProvider> serviceProviders = new List<ServiceProvider>
         {

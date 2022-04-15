@@ -6,6 +6,7 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.OpenApi.Models;
 using ServiceProviderAPI.Entities;
+using ServiceProviderAPI.Repositories;
 
 namespace ServiceProviderAPI
 {
@@ -23,11 +24,14 @@ namespace ServiceProviderAPI
         {
 
             services.AddControllers();
+            services.AddSingleton<IServiceProviderRepository, ServiceProviderRepository>();
+            services.AddSingleton<IHostedService, ServiceDiscoveryHostedService>();
+
             services.AddSwaggerGen(c =>
             {
                 c.SwaggerDoc("v1", new OpenApiInfo { Title = "ServiceProviderAPI", Version = "v1" });
             });
-            services.AddSingleton<IHostedService, ServiceDiscoveryHostedService>();
+           
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
