@@ -73,6 +73,23 @@ services:
     ports: 
       - "4013:80" 
 
+  service-provider-api:
+    container_name: assignment-service-provider-api
+    hostname: serviceProviderApi
+    depends_on:
+        - consul-server
+    networks:
+      - assignment
+    build:
+      context: .
+      dockerfile: ServiceProviderAPI.Dockerfile
+    environment:
+     - ASPNETCORE_ENVIRONMENT=Development
+     - ServiceConfig__ServiceDiscoveryAddress=http://service-registry:8500/
+     - ServiceConfig__ServiceAddress=http://serviceProviderApi
+    ports: 
+      - "4014:80" 
+
 networks:
   assignment:
     driver: bridge
