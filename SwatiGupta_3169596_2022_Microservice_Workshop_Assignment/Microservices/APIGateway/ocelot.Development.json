@@ -34,6 +34,13 @@
       "DownstreamScheme": "http",
       "UpstreamPathTemplate": "/serviceprovider/{queryparam}",
       "UpstreamHttpMethod": [ "GET" ]
+    },
+    {
+      "ServiceName": "BookingAPI",
+      "DownstreamPathTemplate": "/api/v1/booking/bookservice",
+      "DownstreamScheme": "http",
+      "UpstreamPathTemplate": "/bookservice",
+      "UpstreamHttpMethod": [ "POST" ]
     }
   ],
   "GlobalConfiguration": {

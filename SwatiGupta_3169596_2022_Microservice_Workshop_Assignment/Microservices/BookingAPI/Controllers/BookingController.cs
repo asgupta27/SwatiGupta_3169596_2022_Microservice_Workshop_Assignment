@@ -25,6 +25,7 @@ namespace BookingAPI.Controllers
         [HttpPost]
         [ProducesResponseType((int)HttpStatusCode.Accepted)]
         [ProducesResponseType((int)HttpStatusCode.BadRequest)]
+        [Route("bookService")]
         public ActionResult BookServiceRequest([FromBody] BookingServiceRequest bookingServiceRequest)
         {
             if(bookingServiceRequest == null)
