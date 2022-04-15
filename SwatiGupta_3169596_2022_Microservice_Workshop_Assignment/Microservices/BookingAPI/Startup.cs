@@ -28,7 +28,8 @@ namespace BookingAPI
         {
 
             services.AddControllers();
-
+            services.AddSingleton<IServiceProviderService, ServiceProviderService>();
+            services.AddSingleton<IBookingService, BookingService>();
             services.AddHttpClient<IServiceProviderService, ServiceProviderService>(o =>
                      o.BaseAddress = new Uri(Configuration["ServiceProviderAPIURL"]))
                  .SetHandlerLifetime(TimeSpan.FromMinutes(10))

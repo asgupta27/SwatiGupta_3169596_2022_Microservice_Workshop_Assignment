@@ -5,7 +5,7 @@ using System.Threading.Tasks;
 
 namespace BookingAPI.Entities
 {
-    public class BookServiceRequest
+    public class BookingServiceRequest
     {
         public int Id { get; set; }
         public int ConsumerId { get; set; }

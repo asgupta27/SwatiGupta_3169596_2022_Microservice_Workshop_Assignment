@@ -90,6 +90,23 @@ services:
     ports: 
       - "4014:80" 
 
+  booking-api:
+    container_name: assignment-booking-api
+    hostname: bookingApi
+    depends_on:
+        - consul-server
+    networks:
+      - assignment
+    build:
+      context: .
+      dockerfile: BookingAPI.Dockerfile
+    environment:
+     - ASPNETCORE_ENVIRONMENT=Development
+     - ServiceConfig__ServiceDiscoveryAddress=http://service-registry:8500/
+     - ServiceConfig__ServiceAddress=http://bookingApi
+    ports: 
+      - "4015:80"
+
 networks:
   assignment:
     driver: bridge
