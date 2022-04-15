@@ -106,6 +106,20 @@ services:
      - ServiceConfig__ServiceAddress=http://bookingApi
     ports: 
       - "4015:80"
+  
+  rabbitmq:
+    image: rabbitmq:3-management-alpine
+    container_name: rabbitmq
+    environment:
+        RABBITMQ_ERLANG_COOKIE: guest
+        RABBITMQ_DEFAULT_USER: guest
+        RABBITMQ_DEFAULT_PASS: guest
+    networks:
+      - consul
+    ports:
+      - 5672:5672
+      - 15672:15672
+    hostname: rabbitmq
 
 networks:
   assignment:

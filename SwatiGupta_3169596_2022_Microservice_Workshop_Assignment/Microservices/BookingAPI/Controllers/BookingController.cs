@@ -35,7 +35,7 @@ namespace BookingAPI.Controllers
             else
             {
                 var serviceProviders = this.bookingService.GetServiceProvidersByServiceIdAndLocation(bookingServiceRequest.ServiceId, bookingServiceRequest.LocationId);
-                return Accepted();
+                return Ok(serviceProviders);
             }
         }
     }
