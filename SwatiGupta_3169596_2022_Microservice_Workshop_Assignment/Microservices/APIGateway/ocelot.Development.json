@@ -16,14 +16,14 @@
     },
     {
       "ServiceName": "AdminAPI",
-      "DownstreamPathTemplate": "/api/v1/service/{id}",
+      "DownstreamPathTemplate": "/api/v1/admin/service/{id}",
       "DownstreamScheme": "http",
       "UpstreamPathTemplate": "/service/{id}",
       "UpstreamHttpMethod": [ "GET" ]
     },
     {
       "ServiceName": "AdminAPI",
-      "DownstreamPathTemplate": "/api/v1/service",
+      "DownstreamPathTemplate": "/api/v1/admin/service",
       "DownstreamScheme": "http",
       "UpstreamPathTemplate": "/services",
       "UpstreamHttpMethod": [ "GET" ]
