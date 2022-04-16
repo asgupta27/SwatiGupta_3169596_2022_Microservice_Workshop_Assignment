@@ -104,6 +104,7 @@ services:
      - ASPNETCORE_ENVIRONMENT=Development
      - ServiceConfig__ServiceDiscoveryAddress=http://service-registry:8500/
      - ServiceConfig__ServiceAddress=http://bookingApi
+     - ServiceProviderAPIURL =http://serviceProviderApi
     ports: 
       - "4015:80"
   

@@ -30,9 +30,9 @@
     },
     {
       "ServiceName": "ServiceProviderAPI",
-      "DownstreamPathTemplate": "/api/v1/serviceprovider/{queryparam}",
+      "DownstreamPathTemplate": "/api/v1/serviceprovider?{queryparam}",
       "DownstreamScheme": "http",
-      "UpstreamPathTemplate": "/serviceprovider/{queryparam}",
+      "UpstreamPathTemplate": "/serviceprovider?{queryparam}",
       "UpstreamHttpMethod": [ "GET" ]
     },
     {

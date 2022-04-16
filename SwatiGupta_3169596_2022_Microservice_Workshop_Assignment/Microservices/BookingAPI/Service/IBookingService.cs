@@ -6,6 +6,6 @@ namespace BookingAPI.Service
 {
     public interface IBookingService
     {
-        Task GetServiceProvidersByServiceIdAndLocation(int serviceId, int locationId);
+        Task<List<ServiceProvider>> GetServiceProvidersByServiceIdAndLocation(int serviceId, int locationId);
     }
 }

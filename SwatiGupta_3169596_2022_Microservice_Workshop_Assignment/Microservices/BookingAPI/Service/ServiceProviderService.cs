@@ -22,7 +22,8 @@ namespace BookingAPI.Service
         {
             var requestURL = configuration.GetValue<string>("ServiceProviderAPIURL");
 
-            return await httpClient.GetFromJsonAsync<List<ServiceProvider>>($"{requestURL}/ServiceProvider?serviceId={serviceId}&locationId={locationId}");
+            Console.WriteLine($"service provider url - {requestURL}");
+            return await httpClient.GetFromJsonAsync<List<ServiceProvider>>($"{requestURL}/api/v1/ServiceProvider?serviceId={serviceId}&locationId={locationId}");
         }
     }
 }

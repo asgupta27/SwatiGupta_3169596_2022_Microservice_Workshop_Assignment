@@ -9,8 +9,7 @@ using Polly.Extensions.Http;
 using System;
 using System.Net.Http;
 using Microsoft.OpenApi.Models;
-
-
+using MassTransit;
 
 namespace BookingAPI
 {
@@ -28,8 +27,17 @@ namespace BookingAPI
         {
 
             services.AddControllers();
+            services.AddAutoMapper(typeof(Startup));
             services.AddSingleton<IServiceProviderService, ServiceProviderService>();
             services.AddSingleton<IBookingService, BookingService>();
+            services.AddMassTransit(config => {
+                config.UsingRabbitMq((ctx, cfg) => {
+                    cfg.Host(Configuration["EventBus:HostAddress"]);
+                    cfg.UseHealthCheck(ctx);
+                });
+            });
+            services.AddMassTransitHostedService();
+
             services.AddHttpClient<IServiceProviderService, ServiceProviderService>(o =>
                      o.BaseAddress = new Uri(Configuration["ServiceProviderAPIURL"]))
                  .SetHandlerLifetime(TimeSpan.FromMinutes(10))

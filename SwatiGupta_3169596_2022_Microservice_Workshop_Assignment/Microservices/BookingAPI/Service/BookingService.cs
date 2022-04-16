@@ -16,10 +16,10 @@ namespace BookingAPI.Service
         {
             this.serviceProviderService = serviceProviderService;
         }
-        public async Task  GetServiceProvidersByServiceIdAndLocation(int serviceId, int locationId)
+        public  Task<List<ServiceProvider>>  GetServiceProvidersByServiceIdAndLocation(int serviceId, int locationId)
         {
             var sps = serviceProviderService.GetServiceProvidersByServiceIdAndLocation(serviceId, locationId);
-
+            return sps;
         }
     }
 }
