@@ -20,9 +20,10 @@ namespace BookingAPI.Controllers
         /// <summary>
         /// Booking controller
         /// </summary>
-        public BookingController(IBookingService bookingService, IPublishEndpoint publishEndpoint)
+        public BookingController(IBookingService bookingService, IPublishEndpoint publishEndpoint, IMapper mapper)
         {
             this.bookingService = bookingService;
+            _mapper = mapper ?? throw new ArgumentNullException(nameof(mapper));
             _publishEndpoint = publishEndpoint ?? throw new ArgumentNullException(nameof(publishEndpoint));
         }
         
