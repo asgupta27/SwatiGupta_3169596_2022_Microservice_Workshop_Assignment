@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using ServiceProviderAPI.Entities;
+using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 
@@ -19,7 +20,8 @@ namespace ServiceProviderAPI
         [Route("SendBookingRequest")]
         public async Task<ActionResult> SendBookingRequest([FromBody] Booking booking)
         {
-            await this._serviceProviderService.SendBookingRequest(booking);
+            Console.WriteLine($"service Id {booking.ServiceId}, locationId - {booking.LocationId}")
+            await this._serviceProviderService.SendBookingRequest(booking);            
             return Ok();
         }
 
