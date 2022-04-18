@@ -61,8 +61,12 @@ namespace BookingAPI
             }
             else
             {
-                Console.WriteLine($"Is Booking accepted - {bookingRequestResponse.IsAccepted.ToString()}");
-
+                if (bookingRequestResponse.IsAccepted)
+                {
+                    Console.WriteLine($"Is Booking accepted - {bookingRequestResponse.IsAccepted.ToString()}");
+                    var eventMessage = _mapper.Map<BookingConfirmationEvent>(bookingRequestResponse);
+                    await _publishEndpoint.Publish<BookingConfirmationEvent>(eventMessage);
+                }
                 return Accepted();
             }
         }

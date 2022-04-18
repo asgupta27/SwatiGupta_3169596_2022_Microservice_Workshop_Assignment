@@ -30,10 +30,17 @@
     },
     {
       "ServiceName": "ServiceProviderAPI",
-      "DownstreamPathTemplate": "/api/v1/serviceprovider/{queryparam}",
+      "DownstreamPathTemplate": "/api/v1/serviceprovider/SendBookingRequest",
       "DownstreamScheme": "http",
-      "UpstreamPathTemplate": "/serviceprovider/{queryparam}",
-      "UpstreamHttpMethod": [ "GET" ]
+      "UpstreamPathTemplate": "/SendBookingRequest",
+      "UpstreamHttpMethod": [ "POST" ]
+    },
+    {
+      "ServiceName": "ServiceProviderAPI",
+      "DownstreamPathTemplate": "/api/v1/serviceprovider/AddServiceProvider",
+      "DownstreamScheme": "http",
+      "UpstreamPathTemplate": "/serviceprovider/AddServiceProvider",
+      "UpstreamHttpMethod": [ "POST" ]
     },
     {
       "ServiceName": "BookingAPI",
