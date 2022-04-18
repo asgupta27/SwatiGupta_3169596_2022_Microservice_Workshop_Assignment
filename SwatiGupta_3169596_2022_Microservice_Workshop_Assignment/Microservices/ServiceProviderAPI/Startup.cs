@@ -1,6 +1,8 @@
+using EventBus.Message.Event;
+using EventBus.Messages.Common;
+using MassTransit;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
-using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
@@ -24,7 +26,7 @@ namespace ServiceProviderAPI
             services.AddControllers();
             services.AddSingleton<IServiceProviderRepository, ServiceProviderRepository>();
             services.AddSingleton<IServiceProviderService, ServiceProviderService>();
-            services.AddSingleton<IHostedService, ServiceDiscoveryHostedService>();
+            services.AddSingleton<IHostedService, ServiceDiscoveryHostedService>();          
 
             services.AddSwaggerGen(c =>
             {

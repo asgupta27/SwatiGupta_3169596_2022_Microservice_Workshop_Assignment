@@ -7,7 +7,7 @@ using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
 
-namespace ConsumerAPI
+namespace BookingAPI
 {
     public class ServiceDiscoveryHostedService : IHostedService
     {

@@ -1,7 +1,7 @@
 ﻿
 namespace EventBus.Message.Event
 {
-    public class BookingConfirmationEvent
+    public class BookingServiceRequestEvent
     {
         public int BookingId { get; set; }
         public int ConsumerId { get; set; }

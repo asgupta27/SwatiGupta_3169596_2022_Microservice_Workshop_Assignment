@@ -1,9 +1,11 @@
 {
   "version": 2,
-  "dgSpecHash": "/4CLDdOZfASvdIaiUZ7JxGijNil5gPhSEICHULIKoerNL0Qy+p5nIdlkcsL2ZWFSsf4nrpvvbw7N7mF5zFVA/g==",
+  "dgSpecHash": "rNpLzyuw017XfXFqYJ38FlXsEb8KPeMBN0cM/B8XlqzUl5p/MICLXKa7bq0u3RhDZ8SG+1UvPUMKQW0eTcYr3w==",
   "success": true,
   "projectFilePath": "D:\\StudyProjects\\AssignmentProject\\SwatiGupta_3169596_2022_Microservice_Workshop_Assignment\\Microservices\\ServiceProviderAPI\\ServiceProviderAPI.csproj",
   "expectedPackageFiles": [
+    "C:\\Users\\swatigupta01\\.nuget\\packages\\automapper\\10.1.1\\automapper.10.1.1.nupkg.sha512",
+    "C:\\Users\\swatigupta01\\.nuget\\packages\\automapper.extensions.microsoft.dependencyinjection\\8.1.1\\automapper.extensions.microsoft.dependencyinjection.8.1.1.nupkg.sha512",
     "C:\\Users\\swatigupta01\\.nuget\\packages\\automatonymous\\5.1.1\\automatonymous.5.1.1.nupkg.sha512",
     "C:\\Users\\swatigupta01\\.nuget\\packages\\consul\\1.6.10.4\\consul.1.6.10.4.nupkg.sha512",
     "C:\\Users\\swatigupta01\\.nuget\\packages\\greenpipes\\4.0.0\\greenpipes.4.0.0.nupkg.sha512",
@@ -12,6 +14,7 @@
     "C:\\Users\\swatigupta01\\.nuget\\packages\\masstransit.extensions.dependencyinjection\\7.1.5\\masstransit.extensions.dependencyinjection.7.1.5.nupkg.sha512",
     "C:\\Users\\swatigupta01\\.nuget\\packages\\masstransit.rabbitmq\\7.1.5\\masstransit.rabbitmq.7.1.5.nupkg.sha512",
     "C:\\Users\\swatigupta01\\.nuget\\packages\\microsoft.bcl.asyncinterfaces\\1.1.1\\microsoft.bcl.asyncinterfaces.1.1.1.nupkg.sha512",
+    "C:\\Users\\swatigupta01\\.nuget\\packages\\microsoft.csharp\\4.7.0\\microsoft.csharp.4.7.0.nupkg.sha512",
     "C:\\Users\\swatigupta01\\.nuget\\packages\\microsoft.extensions.apidescription.server\\3.0.0\\microsoft.extensions.apidescription.server.3.0.0.nupkg.sha512",
     "C:\\Users\\swatigupta01\\.nuget\\packages\\microsoft.extensions.configuration.abstractions\\3.1.11\\microsoft.extensions.configuration.abstractions.3.1.11.nupkg.sha512",
     "C:\\Users\\swatigupta01\\.nuget\\packages\\microsoft.extensions.dependencyinjection.abstractions\\3.1.11\\microsoft.extensions.dependencyinjection.abstractions.3.1.11.nupkg.sha512",

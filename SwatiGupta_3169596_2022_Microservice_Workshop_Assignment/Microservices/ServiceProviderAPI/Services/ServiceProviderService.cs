@@ -26,6 +26,6 @@ namespace ServiceProviderAPI
         public Task<bool> AddServiceProvider(ServiceProvider serviceProvider)
         {
             return _serviceProviderRepository.AddServiceProvider(serviceProvider);
-        }
+        }       
     }
 }

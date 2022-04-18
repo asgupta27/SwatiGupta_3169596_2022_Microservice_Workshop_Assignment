@@ -30,6 +30,7 @@ namespace BookingAPI
             services.AddSingleton<IServiceProviderService, ServiceProviderService>();
             services.AddSingleton<IBookingService, BookingService>();
             services.AddSingleton<IBookingRepository, BookingRepository>();
+            services.AddSingleton<IHostedService, ServiceDiscoveryHostedService>();
             services.AddMassTransit(config => {
                 config.UsingRabbitMq((ctx, cfg) => {
                     cfg.Host(Configuration["EventBus:HostAddress"]);

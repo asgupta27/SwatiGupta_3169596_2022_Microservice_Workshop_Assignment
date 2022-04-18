@@ -24,6 +24,20 @@ services:
     networks:
       - assignment
     command: "agent"
+
+  rabbitmq:
+    image: rabbitmq:3-management-alpine
+    container_name: rabbitmq
+    environment:
+        RABBITMQ_ERLANG_COOKIE: guest
+        RABBITMQ_DEFAULT_USER: guest
+        RABBITMQ_DEFAULT_PASS: guest
+    networks:
+      - assignment
+    ports:
+      - 5672:5672
+      - 15672:15672
+    hostname: rabbitmq
   
   api-gateway:
     container_name: assignment-api-gateway
@@ -107,20 +121,23 @@ services:
      - ServiceProviderAPIURL=http://serviceProviderApi
     ports: 
       - "4015:80"
-  
-  rabbitmq:
-    image: rabbitmq:3-management-alpine
-    container_name: rabbitmq
-    environment:
-        RABBITMQ_ERLANG_COOKIE: guest
-        RABBITMQ_DEFAULT_USER: guest
-        RABBITMQ_DEFAULT_PASS: guest
+
+  notification-api:
+    container_name: assignment-notification-api
+    hostname: notificationApi
+    depends_on:
+        - consul-server
     networks:
       - assignment
-    ports:
-      - 5672:5672
-      - 15672:15672
-    hostname: rabbitmq
+    build:
+      context: .
+      dockerfile: NotificationAPI.Dockerfile
+    environment:
+     - ASPNETCORE_ENVIRONMENT=Development
+     - ServiceConfig__ServiceDiscoveryAddress=http://service-registry:8500/
+     - ServiceConfig__ServiceAddress=http://notificationApi
+    ports: 
+      - "4016:80"
 
 networks:
   assignment:

@@ -28,6 +28,11 @@ namespace ServiceProviderAPI.Entities
         public string Address { get; set; }
 
         /// <summary>
+        /// Get or set contact no
+        /// </summary>
+        public string ContactNo { get; set; }
+
+        /// <summary>
         /// List of services provided by the service provider
         /// </summary>
         public List<int> Services { get; set; }
