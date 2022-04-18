@@ -51,9 +51,20 @@ namespace BookingAPI
             }
         }
 
-        //public async Task<ActionResult> ConfirmBookingRequest([FromBody] BookingServiceRequest bookingServiceRequest)
-        //{
+        [HttpPost]
+        [Route("bookingresponse")]
+        public async Task<ActionResult> ConfirmBookingRequest([FromBody] BookingRequestResponse bookingRequestResponse)
+        {
+            if(bookingRequestResponse == null)
+            {
+                return BadRequest();
+            }
+            else
+            {
+                Console.WriteLine($"Is Booking accepted - {bookingRequestResponse.IsAccepted.ToString()}");
 
-        //}
+                return Accepted();
+            }
+        }
     }
 }
