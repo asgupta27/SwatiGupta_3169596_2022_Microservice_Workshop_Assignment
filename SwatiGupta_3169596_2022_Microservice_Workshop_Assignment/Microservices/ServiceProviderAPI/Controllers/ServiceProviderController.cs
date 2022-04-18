@@ -1,33 +1,32 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using ServiceProviderAPI.Entities;
-using ServiceProviderAPI.Repositories;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 
-namespace ServiceProviderAPI.Controllers
+namespace ServiceProviderAPI
 {
     [ApiController]
     [Route("api/v1/[controller]")]
     public class ServiceProviderController : ControllerBase
     {
-        public IServiceProviderRepository serviceProviderRepository;
-        public ServiceProviderController(IServiceProviderRepository serviceProviderRepository)
+        public IServiceProviderService _serviceProviderService;
+        public ServiceProviderController(IServiceProviderService serviceProviderService)
         {
-            this.serviceProviderRepository = serviceProviderRepository;
+            this._serviceProviderService = serviceProviderService;
         }
 
-        [HttpGet]
-        public async Task<ActionResult<List<ServiceProvider>>> GetAllServiceProviderByLocationId(int serviceId, int locationId)
+        [HttpPost]
+        [Route("SendBookingRequest")]
+        public async Task<ActionResult> SendBookingRequest([FromBody] Booking booking)
         {
-            var providers = this.serviceProviderRepository.GetServiceProvidersByServiceAndLocation(serviceId, locationId);
-            return Ok(providers);
+            await this._serviceProviderService.SendBookingRequest(booking);
+            return Ok();
         }
 
         [HttpPost]
         public  Task<bool> AddServiceProvider([FromBody] ServiceProvider serviceProvider)
         {
-            return this.serviceProviderRepository.AddServiceProvider(serviceProvider);
+            return this._serviceProviderService.AddServiceProvider(serviceProvider);
         }
-
     }
 }

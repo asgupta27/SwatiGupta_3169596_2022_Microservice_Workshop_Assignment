@@ -4,6 +4,7 @@ using BookingAPI.Service;
 using EventBus.Message.Event;
 using MassTransit;
 using Microsoft.AspNetCore.Mvc;
+using Newtonsoft.Json;
 using System;
 using System.Net;
 using System.Threading.Tasks;
@@ -37,7 +38,7 @@ namespace BookingAPI.Controllers
         [Route("bookService")]
         public async Task<ActionResult> BookServiceRequest([FromBody] BookingServiceRequest bookingServiceRequest)
         {
-            Console.WriteLine("this is called");
+            Console.WriteLine($"Booking request started - Booking object is - {JsonConvert.SerializeObject(bookingServiceRequest)}");
             if(bookingServiceRequest == null)
             {
                 return BadRequest();
@@ -45,19 +46,16 @@ namespace BookingAPI.Controllers
             else
             {
                 Console.WriteLine($"this is called locationid- { bookingServiceRequest.LocationId} - serviceid - {bookingServiceRequest.ServiceId}" );
-                var serviceProviders =  this.bookingService.GetServiceProvidersByServiceIdAndLocation(bookingServiceRequest.ServiceId, bookingServiceRequest.LocationId).Result;
-                if(serviceProviders != null && serviceProviders.Count > 0)
-                {
-                    Console.WriteLine("The data in service provider exists");
-                }
-                foreach(var serviceProvider in serviceProviders)
-                {
-                    var eventMessage = _mapper.Map<BookingServiceRequestEvent>(bookingServiceRequest);
-                  
-                    await _publishEndpoint.Publish<BookingServiceRequestEvent>(eventMessage);
-                }
-                return Ok(serviceProviders);
+                var booking = _mapper.Map<Booking>(bookingServiceRequest);
+                var bookingOrder =  await this.bookingService.CreateBooking(booking);
+                Console.WriteLine($"Booking has been confirmed and request send to service providers.Booking Id - {bookingOrder.BookingId}");
+                return Accepted();
             }
         }
+
+        //public async Task<ActionResult> ConfirmBookingRequest([FromBody] BookingServiceRequest bookingServiceRequest)
+        //{
+
+        //}
     }
 }

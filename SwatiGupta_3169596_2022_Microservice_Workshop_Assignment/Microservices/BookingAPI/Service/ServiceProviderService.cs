@@ -1,10 +1,13 @@
-﻿using BookingAPI.Models;
+﻿using BookingAPI.Entities;
+using BookingAPI.Models;
 using Microsoft.Extensions.Configuration;
+using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Net.Http;
 using System.Net.Http.Json;
+using System.Text;
 using System.Threading.Tasks;
 
 namespace BookingAPI.Service
@@ -18,12 +21,16 @@ namespace BookingAPI.Service
             this.httpClient = httpClient;
             this.configuration = configuration;
         }
-        public async Task<List<ServiceProvider>>  GetServiceProvidersByServiceIdAndLocation(int serviceId, int locationId)
+        public async Task SendBookingRequest(Booking booking)
         {
             var requestURL = configuration.GetValue<string>("ServiceProviderAPIURL");
 
             Console.WriteLine($"service provider url - {requestURL}");
-            return await httpClient.GetFromJsonAsync<List<ServiceProvider>>($"{requestURL}/api/v1/ServiceProvider?serviceId={serviceId}&locationId={locationId}");
+
+            var bookingJson = JsonConvert.SerializeObject(booking);
+            var bookingRequest = new StringContent(bookingJson, Encoding.UTF8, "application/json");
+
+            await httpClient.PostAsync($"{requestURL}/api/v1/ServiceProvider/SendBookingRequest", bookingRequest);
         }
     }
 }

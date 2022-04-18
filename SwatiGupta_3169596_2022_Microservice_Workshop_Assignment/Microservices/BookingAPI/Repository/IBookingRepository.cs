@@ -1,11 +1,9 @@
 ﻿using BookingAPI.Entities;
-using BookingAPI.Models;
-using System.Collections.Generic;
 using System.Threading.Tasks;
 
-namespace BookingAPI.Service
+namespace BookingAPI.Repositories
 {
-    public interface IBookingService
+    public interface IBookingRepository
     {
         Task<Booking> CreateBooking(Booking booking);
     }

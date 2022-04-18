@@ -5,8 +5,6 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.OpenApi.Models;
-using ServiceProviderAPI.Entities;
-using ServiceProviderAPI.Repositories;
 
 namespace ServiceProviderAPI
 {
@@ -25,6 +23,7 @@ namespace ServiceProviderAPI
 
             services.AddControllers();
             services.AddSingleton<IServiceProviderRepository, ServiceProviderRepository>();
+            services.AddSingleton<IServiceProviderService, ServiceProviderService>();
             services.AddSingleton<IHostedService, ServiceDiscoveryHostedService>();
 
             services.AddSwaggerGen(c =>

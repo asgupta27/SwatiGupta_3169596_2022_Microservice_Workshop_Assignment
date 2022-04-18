@@ -1,12 +1,13 @@
-﻿using BookingAPI.Entities;
-using BookingAPI.Models;
-using System.Collections.Generic;
+﻿
+using ServiceProviderAPI.Entities;
 using System.Threading.Tasks;
 
-namespace BookingAPI.Service
+namespace ServiceProviderAPI
 {
     public interface IServiceProviderService
     {
        Task SendBookingRequest(Booking booking);
+
+        Task<bool> AddServiceProvider(ServiceProvider serviceProvider);
     }
 }

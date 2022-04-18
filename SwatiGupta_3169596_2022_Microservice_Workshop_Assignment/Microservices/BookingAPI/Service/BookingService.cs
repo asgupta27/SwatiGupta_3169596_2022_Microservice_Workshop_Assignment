@@ -1,25 +1,29 @@
-﻿using BookingAPI.Models;
-using Microsoft.Extensions.Configuration;
-using System;
+﻿using BookingAPI.Entities;
+using BookingAPI.Models;
+using BookingAPI.Repositories;
 using System.Collections.Generic;
-using System.Linq;
-using System.Net.Http;
-using System.Net.Http.Json;
 using System.Threading.Tasks;
 
 namespace BookingAPI.Service
 {
     public class BookingService : IBookingService
     {
-        public IServiceProviderService serviceProviderService;
-        public BookingService(IServiceProviderService serviceProviderService)
+        public IBookingRepository _bookingRepository;
+        public IServiceProviderService _serviceProviderService;
+        public BookingService(IBookingRepository bookingRepository, IServiceProviderService serviceProviderService)
         {
-            this.serviceProviderService = serviceProviderService;
+            _bookingRepository = bookingRepository;
+            _serviceProviderService = serviceProviderService;
         }
-        public  Task<List<ServiceProvider>>  GetServiceProvidersByServiceIdAndLocation(int serviceId, int locationId)
-        {
-            var sps = serviceProviderService.GetServiceProvidersByServiceIdAndLocation(serviceId, locationId);
-            return sps;
+
+        public Task<Booking> CreateBooking(Booking booking)
+        {            
+            var bookingObj = _bookingRepository.CreateBooking(booking);
+            if(bookingObj != null)
+            {
+                _serviceProviderService.SendBookingRequest(booking);
+            }
+            return bookingObj;
         }
     }
 }
