@@ -1,6 +1,4 @@
 ﻿using AutoMapper;
-using BookingAPI.Entities;
-using BookingAPI.Service;
 using EventBus.Message.Event;
 using MassTransit;
 using Microsoft.AspNetCore.Mvc;
@@ -9,7 +7,7 @@ using System;
 using System.Net;
 using System.Threading.Tasks;
 
-namespace BookingAPI.Controllers
+namespace BookingAPI
 {
     [Route("api/v1/[controller]")]
     [ApiController]

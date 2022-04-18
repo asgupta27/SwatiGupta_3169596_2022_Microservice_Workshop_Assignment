@@ -1,7 +1,6 @@
-﻿using BookingAPI.Entities;
-using System.Threading.Tasks;
+﻿using System.Threading.Tasks;
 
-namespace BookingAPI.Repositories
+namespace BookingAPI
 {
     public interface IBookingRepository
     {

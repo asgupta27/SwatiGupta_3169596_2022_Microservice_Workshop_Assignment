@@ -19,14 +19,23 @@ namespace AdminAPI.Controllers
             serviceRepository = new ServiceRepository();
         }
 
+        /// <summary>
+        /// Get list of all services
+        /// </summary>
+        /// <returns></returns>
         [HttpGet]
-        [Route("service")]
+        [Route("service")]        
         public async Task<ActionResult<List<Service>>> GetServices()
         {
             var services = serviceRepository.GetServices();
             return Ok(services);
         }
 
+        /// <summary>
+        /// Get service detail by service Id
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
         [HttpGet]
         [Route("service/{id}")]
         public async Task<ActionResult<Service>> GetService(int id)
@@ -35,6 +44,11 @@ namespace AdminAPI.Controllers
             return Ok(service);
         }
 
+        /// <summary>
+        /// Add service
+        /// </summary>
+        /// <param name="service"></param>
+        /// <returns></returns>
         [HttpPost]
         [Route("addService")]
         public Task<bool> AddService(Service service)

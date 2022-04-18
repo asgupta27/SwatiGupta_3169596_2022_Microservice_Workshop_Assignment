@@ -1,9 +1,8 @@
-﻿using BookingAPI.Entities;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace BookingAPI.Repositories
+namespace BookingAPI
 {
     public class BookingRepository : IBookingRepository
     {
