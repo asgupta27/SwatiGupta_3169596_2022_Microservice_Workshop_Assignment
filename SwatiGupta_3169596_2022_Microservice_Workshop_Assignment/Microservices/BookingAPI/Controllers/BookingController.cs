@@ -4,6 +4,7 @@ using MassTransit;
 using Microsoft.AspNetCore.Mvc;
 using Newtonsoft.Json;
 using System;
+using System.Collections.Generic;
 using System.Net;
 using System.Threading.Tasks;
 
@@ -24,6 +25,17 @@ namespace BookingAPI
             this.bookingService = bookingService;
             _mapper = mapper ?? throw new ArgumentNullException(nameof(mapper));
             _publishEndpoint = publishEndpoint ?? throw new ArgumentNullException(nameof(publishEndpoint));
+        }
+
+        /// <summary>
+        /// Get all bookings
+        /// </summary>
+        /// <returns></returns>
+        [Route("bookings")]
+        [HttpGet]
+        public async Task<ActionResult<IList<Booking>>> GetBookings()
+        {
+            return Ok(this.bookingService.GetBookings());
         }
         
         /// <summary>

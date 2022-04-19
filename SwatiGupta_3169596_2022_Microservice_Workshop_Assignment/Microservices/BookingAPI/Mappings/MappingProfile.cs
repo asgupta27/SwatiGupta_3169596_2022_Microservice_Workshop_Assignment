@@ -1,4 +1,5 @@
 ﻿using AutoMapper;
+using EventBus.Message.Event;
 
 namespace BookingAPI.Mappings
 {
@@ -8,6 +9,9 @@ namespace BookingAPI.Mappings
         {
             CreateMap<BookingServiceRequest, Booking>()
             .ForMember(dest => dest.BookingId, opt => opt.MapFrom(src => src.Id))
+            .ReverseMap();
+
+            CreateMap<BookingRequestResponse, BookingConfirmationEvent>()
             .ReverseMap();
         }
     }

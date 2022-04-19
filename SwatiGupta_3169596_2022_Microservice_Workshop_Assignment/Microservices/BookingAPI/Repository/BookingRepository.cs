@@ -7,7 +7,12 @@ namespace BookingAPI
     public class BookingRepository : IBookingRepository
     {
         private static readonly IList<Booking> _bookings = new List<Booking>();
-            
+         
+        /// <summary>
+        /// Create Booking
+        /// </summary>
+        /// <param name="booking"></param>
+        /// <returns></returns>
         public Task<Booking> CreateBooking(Booking booking)
         {
             int maxID = 0;
@@ -18,6 +23,15 @@ namespace BookingAPI
             booking.BookingId = maxID + 1;
             _bookings.Add(booking);
             return Task.FromResult(booking);
+        }
+
+        /// <summary>
+        /// Get all booking list
+        /// </summary>
+        /// <returns></returns>
+        public Task<IList<Booking>> GetBookings()
+        {
+            return Task.FromResult(_bookings);
         }
     }
 }

@@ -1,4 +1,5 @@
-﻿using System.Threading.Tasks;
+﻿using System.Collections.Generic;
+using System.Threading.Tasks;
 
 namespace BookingAPI
 {
@@ -12,6 +13,11 @@ namespace BookingAPI
             _serviceProviderService = serviceProviderService;
         }
 
+        /// <summary>
+        /// Create booking
+        /// </summary>
+        /// <param name="booking"></param>
+        /// <returns></returns>
         public Task<Booking> CreateBooking(Booking booking)
         {            
             var bookingObj = _bookingRepository.CreateBooking(booking);
@@ -20,6 +26,15 @@ namespace BookingAPI
                 _serviceProviderService.SendBookingRequest(booking);
             }
             return bookingObj;
+        }
+
+        /// <summary>
+        /// Get all bookings list
+        /// </summary>
+        /// <returns></returns>
+        public Task<IList<Booking>> GetBookings()
+        {
+            return _bookingRepository.GetBookings();
         }
     }
 }
