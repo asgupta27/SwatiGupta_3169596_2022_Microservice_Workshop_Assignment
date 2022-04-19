@@ -119,6 +119,7 @@ services:
      - ServiceConfig__ServiceDiscoveryAddress=http://service-registry:8500/
      - ServiceConfig__ServiceAddress=http://bookingApi
      - ServiceProviderAPIURL=http://serviceProviderApi
+     - RabbitMQHostName=rabbitmq
     ports: 
       - "4015:80"
 
