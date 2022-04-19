@@ -20,7 +20,7 @@ namespace ServiceProviderAPI
         [Route("SendBookingRequest")]
         public async Task<ActionResult> SendBookingRequest([FromBody] Booking booking)
         {
-            Console.WriteLine($"service Id {booking.ServiceId}, locationId - {booking.LocationId}")
+            Console.WriteLine($"service Id {booking.ServiceId}, locationId - {booking.LocationId}");
             await this._serviceProviderService.SendBookingRequest(booking);            
             return Ok();
         }

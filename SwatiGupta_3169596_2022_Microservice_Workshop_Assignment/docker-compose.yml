@@ -127,6 +127,7 @@ services:
     hostname: notificationApi
     depends_on:
         - consul-server
+        - rabbitmq
     networks:
       - assignment
     build:
