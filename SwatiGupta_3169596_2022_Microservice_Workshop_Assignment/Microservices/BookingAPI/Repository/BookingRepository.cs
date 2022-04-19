@@ -10,7 +10,11 @@ namespace BookingAPI
             
         public Task<Booking> CreateBooking(Booking booking)
         {
-            int maxID = _bookings.Select(x => x.BookingId).Max();
+            int maxID = 0;
+            if (_bookings != null && _bookings.Count() > 0)
+            {
+                maxID = _bookings.Select(x => x.BookingId).Max();
+            }
             booking.BookingId = maxID + 1;
             _bookings.Add(booking);
             return Task.FromResult(booking);

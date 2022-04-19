@@ -22,6 +22,9 @@ namespace BookingAPI
             {              
                 config.Address = configuration.GetValue<Uri>("ServiceConfig:ServiceDiscoveryAddress");
                 Console.WriteLine($"Hi the service name is - {config.Address} and address = {config.Address}");
+
+                var rabbitMQHostName = configuration["RabbitMQHostName"];
+                Console.WriteLine($"Hi rabbit mq address" + rabbitMQHostName);
             });
         }
 
