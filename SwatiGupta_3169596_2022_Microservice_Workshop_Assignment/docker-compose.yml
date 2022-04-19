@@ -137,6 +137,7 @@ services:
      - ASPNETCORE_ENVIRONMENT=Development
      - ServiceConfig__ServiceDiscoveryAddress=http://service-registry:8500/
      - ServiceConfig__ServiceAddress=http://notificationApi
+     - RabbitMQHostName=rabbitmq
     ports: 
       - "4016:80"
 

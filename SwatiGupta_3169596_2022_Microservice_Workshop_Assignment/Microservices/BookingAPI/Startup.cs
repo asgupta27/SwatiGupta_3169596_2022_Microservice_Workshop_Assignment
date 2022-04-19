@@ -31,9 +31,15 @@ namespace BookingAPI
             services.AddSingleton<IBookingService, BookingService>();
             services.AddSingleton<IBookingRepository, BookingRepository>();
             services.AddSingleton<IHostedService, ServiceDiscoveryHostedService>();
+            var rabbitmaqAddress = Configuration["EventBus:HostAddress"];
+            if (!string.IsNullOrWhiteSpace(rabbitmaqAddress))
+            {
+                var rabbitMQHostName = Configuration["RabbitMQHostName"];
+                rabbitmaqAddress = rabbitmaqAddress.Replace("localhost", rabbitMQHostName);
+            }
             services.AddMassTransit(config => {
                 config.UsingRabbitMq((ctx, cfg) => {
-                    cfg.Host(Configuration["EventBus:HostAddress"]);
+                    cfg.Host(rabbitmaqAddress);
                     cfg.UseHealthCheck(ctx);
                 });
             });

@@ -32,12 +32,18 @@ namespace NotificationAPI
             services.AddControllers();
             services.AddAutoMapper(typeof(Startup));
             services.AddSingleton<IHostedService, ServiceDiscoveryHostedService>();
+            var rabbitmaqAddress = Configuration["EventBus:HostAddress"];
+            if (!string.IsNullOrWhiteSpace(rabbitmaqAddress))
+            {
+                var rabbitMQHostName = Configuration["RabbitMQHostName"];
+                rabbitmaqAddress = rabbitmaqAddress.Replace("localhost", rabbitMQHostName);
+            }
             services.AddMassTransit(config => {
 
                 config.AddConsumer<BookingConfirmationEventConsumer>();
 
                 config.UsingRabbitMq((ctx, cfg) => {
-                    cfg.Host(Configuration["EventBus:HostAddress"]);
+                    cfg.Host(rabbitmaqAddress);
                     cfg.UseHealthCheck(ctx);
 
                     cfg.ReceiveEndpoint(EventBusConstants.BookingConfirmationQueue, c => {
