@@ -32,10 +32,14 @@ namespace BookingAPI
             services.AddSingleton<IBookingRepository, BookingRepository>();
             services.AddSingleton<IHostedService, ServiceDiscoveryHostedService>();
             var rabbitmaqAddress = Configuration["EventBus:HostAddress"];
+
+            Console.WriteLine("rabbit mq address" +  rabbitmaqAddress);
             if (!string.IsNullOrWhiteSpace(rabbitmaqAddress))
             {
                 var rabbitMQHostName = Configuration["RabbitMQHostName"];
+                Console.WriteLine("rabbitMQHostName" + rabbitMQHostName);
                 rabbitmaqAddress = rabbitmaqAddress.Replace("localhost", rabbitMQHostName);
+                Console.WriteLine("rabbit mq address" + rabbitmaqAddress);
             }
             services.AddMassTransit(config => {
                 config.UsingRabbitMq((ctx, cfg) => {
