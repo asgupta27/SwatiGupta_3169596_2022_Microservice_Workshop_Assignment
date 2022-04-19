@@ -12,9 +12,15 @@ namespace ServiceProviderAPI
         {
             _serviceProviderRepository = serviceProviderRepository;
         }
+
+        /// <summary>
+        /// Send booking request to service providers
+        /// </summary>
+        /// <param name="booking"></param>
+        /// <returns></returns>
         public async Task SendBookingRequest(Booking booking)
         {
-            var serviceProviders = _serviceProviderRepository.GetServiceProvidersByServiceAndLocation(booking.ServiceId, booking.LocationId);
+            var serviceProviders = await _serviceProviderRepository.GetServiceProvidersByServiceAndLocation(booking.ServiceId, booking.LocationId);
             if(serviceProviders != null)
             {
                 foreach(var provider in serviceProviders)
@@ -23,6 +29,12 @@ namespace ServiceProviderAPI
                 }
             }
         }
+
+        /// <summary>
+        /// Add service provider
+        /// </summary>
+        /// <param name="serviceProvider"></param>
+        /// <returns>Success flag</returns>
         public Task<bool> AddServiceProvider(ServiceProvider serviceProvider)
         {
             return _serviceProviderRepository.AddServiceProvider(serviceProvider);

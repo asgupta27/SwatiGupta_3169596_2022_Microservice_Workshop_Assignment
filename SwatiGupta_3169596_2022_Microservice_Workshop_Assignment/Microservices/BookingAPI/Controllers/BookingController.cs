@@ -63,6 +63,11 @@ namespace BookingAPI
             }
         }
 
+        /// <summary>
+        /// Confirm booking request
+        /// </summary>
+        /// <param name="bookingRequestResponse"></param>
+        /// <returns></returns>
         [HttpPost]
         [Route("bookingresponse")]
         public async Task<ActionResult> ConfirmBookingRequest([FromBody] BookingRequestResponse bookingRequestResponse)
@@ -77,7 +82,8 @@ namespace BookingAPI
                 {
                     Console.WriteLine($"Is Booking accepted - {bookingRequestResponse.IsAccepted.ToString()}");
                     var booking = _mapper.Map<Booking>(bookingRequestResponse);
-                     booking = await bookingService.UpdateServiceProvidersDeatils(booking);                  
+                    booking.Status = BookingStatus.Confirm;
+                    booking = await bookingService.UpdateServiceProvidersDeatils(booking);                  
                     var eventMessage = _mapper.Map<BookingConfirmationEvent>(booking);                   
                     await _publishEndpoint.Publish<BookingConfirmationEvent>(eventMessage);
                 }

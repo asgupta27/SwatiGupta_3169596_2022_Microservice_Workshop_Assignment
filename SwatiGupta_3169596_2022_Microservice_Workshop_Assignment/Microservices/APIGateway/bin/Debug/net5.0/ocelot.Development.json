@@ -15,6 +15,13 @@
       "UpstreamHttpMethod": [ "GET" ]
     },
     {
+      "ServiceName": "ConsumerAPI",
+      "DownstreamPathTemplate": "/api/v1/consumer",
+      "DownstreamScheme": "http",
+      "UpstreamPathTemplate": "/addConsumer",
+      "UpstreamHttpMethod": [ "POST" ]
+    },
+    {
       "ServiceName": "AdminAPI",
       "DownstreamPathTemplate": "/api/v1/admin/service/{id}",
       "DownstreamScheme": "http",

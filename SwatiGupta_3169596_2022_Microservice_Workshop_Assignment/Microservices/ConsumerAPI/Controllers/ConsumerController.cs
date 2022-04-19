@@ -1,10 +1,6 @@
 ﻿using ConsumerAPI.Entities;
-using ConsumerAPI.Repositories;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.Extensions.Logging;
-using System;
 using System.Collections.Generic;
-using System.Linq;
 using System.Threading.Tasks;
 
 namespace ConsumerAPI.Controllers
@@ -22,15 +18,32 @@ namespace ConsumerAPI.Controllers
         [HttpGet]
         public async Task<ActionResult<List<Consumer>>> GetConsumers()
         {
-            var users = consumerRepository.GetConsumers();
-            return Ok(users);
+            var consumers = await consumerRepository.GetConsumers();
+            return Ok(consumers);
         }
 
+        /// <summary>
+        /// Get consumer by Id
+        /// </summary>
+        /// <param name="id">The consumer id</param>
+        /// <returns>The consumer</returns>
         [HttpGet("{id}")]
         public async Task<ActionResult<Consumer>> GetConsumer(int id)
         {
-            var user = consumerRepository.GetConsumerById(id);
-            return Ok(user);
-        }      
+            var consumer = await consumerRepository.GetConsumerById(id);
+            return Ok(consumer);
+        }
+
+        /// <summary>
+        /// Create Consumer
+        /// </summary>
+        /// <param name="consumer">The consumer model</param>
+        /// <returns>The consumer</returns>
+        [HttpPost]
+        public async Task<ActionResult<Consumer>> createConsumer([FromBody] Consumer consumer)
+        {
+            var model = await consumerRepository.CreateConsumer(consumer);
+            return Ok(model);
+        }
     }
 }

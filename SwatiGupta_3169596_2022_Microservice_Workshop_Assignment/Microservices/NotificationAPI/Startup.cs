@@ -32,14 +32,12 @@ namespace NotificationAPI
             services.AddControllers();
             services.AddAutoMapper(typeof(Startup));
             services.AddSingleton<IHostedService, ServiceDiscoveryHostedService>();
-            var rabbitmaqAddress = Configuration["EventBus:HostAddress"];
-            Console.WriteLine("rabbit mq address" + rabbitmaqAddress);
+
+            var rabbitmaqAddress = Configuration["EventBus:HostAddress"];          
             if (!string.IsNullOrWhiteSpace(rabbitmaqAddress))
             {
-                var rabbitMQHostName = Configuration["RabbitMQHostName"];
-                Console.WriteLine("rabbitMQHostName" + rabbitMQHostName);
-                rabbitmaqAddress = rabbitmaqAddress.Replace("localhost", rabbitMQHostName);
-                Console.WriteLine("rabbit mq address" + rabbitmaqAddress);
+                var rabbitMQHostName = Configuration["RabbitMQHostName"];               
+                rabbitmaqAddress = rabbitmaqAddress.Replace("localhost", rabbitMQHostName);              
             }
             services.AddMassTransit(config => {
 

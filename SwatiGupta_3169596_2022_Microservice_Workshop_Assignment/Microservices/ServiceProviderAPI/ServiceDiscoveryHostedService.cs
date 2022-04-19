@@ -18,8 +18,7 @@ namespace ServiceProviderAPI
 
             consulClient = new ConsulClient(config =>
             {              
-                config.Address = configuration.GetValue<Uri>("ServiceConfig:ServiceDiscoveryAddress");
-                Console.WriteLine($"Hi the service name is - {config.Address} and address = {config.Address}");
+                config.Address = configuration.GetValue<Uri>("ServiceConfig:ServiceDiscoveryAddress");             
             });
         }
 
@@ -38,8 +37,7 @@ namespace ServiceProviderAPI
                 Name = serviceName,
                 Port = serviceAddress.Port
             };
-
-            Console.WriteLine($"Hi the service name is - {serviceName} and address = {serviceAddress}");
+          
             await consulClient.Agent.ServiceDeregister(registration.ID, cancellationToken);
             await consulClient.Agent.ServiceRegister(registration, cancellationToken);
         }

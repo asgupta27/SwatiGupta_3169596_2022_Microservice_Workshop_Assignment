@@ -1,11 +1,13 @@
 ﻿using ConsumerAPI.Entities;
-using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace ConsumerAPI.Repositories
+namespace ConsumerAPI
 {
+    /// <summary>
+    /// Consumer Repository
+    /// </summary>
     public class ConsumerRepository
     {
         private readonly List<Consumer> consumers;
@@ -21,14 +23,37 @@ namespace ConsumerAPI.Repositories
             };
         }
 
-        public List<Consumer> GetConsumers()
+        /// <summary>
+        /// Get consumers
+        /// </summary>
+        /// <returns>Return consumerlist</returns>
+        public Task<List<Consumer>> GetConsumers()
         {
-            return consumers;
+            return Task.FromResult(consumers);
         }
 
-        public Consumer GetConsumerById(int id)
+        /// <summary>
+        /// Get consumer by Id
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
+        public Task<Consumer> GetConsumerById(int id)
         {
-            return consumers.FirstOrDefault(x => x.Id == id);
+            var consumer = consumers.FirstOrDefault(x => x.Id == id);
+            return Task.FromResult(consumer);
+        }
+
+        /// <summary>
+        /// Create a consumer
+        /// </summary>
+        /// <param name="consumer">The consumer</param>
+        /// <returns>Return the consumer</returns>
+        public Task<Consumer> CreateConsumer(Consumer consumer)
+        {
+            var maxId = consumers.Select(x => x.Id).Max();
+            consumer.Id = maxId;
+            consumers.Add(consumer);
+            return  Task.FromResult(consumer);
         }
     }
 }

@@ -17,6 +17,12 @@ namespace BookingAPI
             this.httpClient = httpClient;
             this.configuration = configuration;
         }
+
+        /// <summary>
+        /// Send booking request
+        /// </summary>
+        /// <param name="booking">The booking model</param>
+        /// <returns></returns>
         public async Task SendBookingRequest(Booking booking)
         {
             try

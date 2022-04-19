@@ -20,18 +20,34 @@ namespace ServiceProviderAPI
             
         }
 
-        public IList<ServiceProvider> GetServiceProviders()
+        /// <summary>
+        /// Get all service providers
+        /// </summary>
+        /// <returns>Return service providers</returns>
+        public Task<IList<ServiceProvider>> GetServiceProviders()
         {
-            return serviceProviders;
+            return Task.FromResult(serviceProviders);
         }
 
-        public IList<ServiceProvider> GetServiceProvidersByServiceAndLocation(int serviceId, int locationId)
+        /// <summary>
+        /// Return service providers by location and service Id
+        /// </summary>
+        /// <param name="serviceId">The service Id</param>
+        /// <param name="locationId">The location Id</param>
+        /// <returns>The service provider</returns>
+        public Task<List<ServiceProvider>> GetServiceProvidersByServiceAndLocation(int serviceId, int locationId)
         {
             var providers = serviceProviders.Where(provider => provider.Location == locationId && provider.Services.Any(service => service == serviceId))
                             .ToList();
-            return providers;
+            return Task.FromResult(providers);
         }
 
+
+        /// <summary>
+        /// Add service Provider
+        /// </summary>
+        /// <param name="serviceProvider">The service provider</param>
+        /// <returns>Success flag</returns>
         public Task<bool> AddServiceProvider(ServiceProvider serviceProvider)
         {
             serviceProviders.Add(serviceProvider);

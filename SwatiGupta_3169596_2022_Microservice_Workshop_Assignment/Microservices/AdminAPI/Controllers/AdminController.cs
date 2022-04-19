@@ -1,10 +1,7 @@
 ﻿using AdminAPI.Entities;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.Extensions.Logging;
 using ServiceAPI.Repositories;
-using System;
 using System.Collections.Generic;
-using System.Linq;
 using System.Threading.Tasks;
 
 namespace AdminAPI.Controllers
@@ -22,38 +19,38 @@ namespace AdminAPI.Controllers
         /// <summary>
         /// Get list of all services
         /// </summary>
-        /// <returns></returns>
+        /// <returns>Get all services</returns>
         [HttpGet]
         [Route("service")]        
         public async Task<ActionResult<List<Service>>> GetServices()
         {
-            var services = serviceRepository.GetServices();
+            var services = await serviceRepository.GetServices();
             return Ok(services);
         }
 
         /// <summary>
         /// Get service detail by service Id
         /// </summary>
-        /// <param name="id"></param>
-        /// <returns></returns>
+        /// <param name="id">The service Id</param>
+        /// <returns>Returns the service</returns>
         [HttpGet]
         [Route("service/{id}")]
         public async Task<ActionResult<Service>> GetService(int id)
         {
-            var service = serviceRepository.GetServiceById(id);
+            var service = await serviceRepository.GetServiceById(id);
             return Ok(service);
         }
 
         /// <summary>
         /// Add service
         /// </summary>
-        /// <param name="service"></param>
-        /// <returns></returns>
+        /// <param name="service">The service</param>
+        /// <returns>Return the success flag</returns>
         [HttpPost]
         [Route("addService")]
-        public Task<bool> AddService(Service service)
+        public async Task<bool> AddService(Service service)
         {
-            return serviceRepository.AddService(service);
+            return await serviceRepository.AddService(service);
         }
     }
 }

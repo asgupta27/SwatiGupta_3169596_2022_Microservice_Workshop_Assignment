@@ -22,16 +22,31 @@ namespace ServiceAPI.Repositories
             
         }
 
-        public List<Service> GetServices()
+        /// <summary>
+        /// Get all services
+        /// </summary>
+        /// <returns>Returns services</returns>
+        public Task<List<Service>> GetServices()
         {
-            return services;
+            return Task.FromResult(services);
         }
 
-        public Service GetServiceById(int id)
+        /// <summary>
+        /// Gets service by service Id
+        /// </summary>
+        /// <param name="id">The service Id</param>
+        /// <returns>Returns the service</returns>
+        public Task<Service> GetServiceById(int id)
         {
-            return services.FirstOrDefault(x => x.Id == id);
+            var service = services.FirstOrDefault(x => x.Id == id);
+            return Task.FromResult(service);
         }
 
+        /// <summary>
+        /// Add service 
+        /// </summary>
+        /// <param name="service">The service model</param>
+        /// <returns>Return the success flag</returns>
         public Task<bool> AddService(Service service)
         {
             services.Add(service);
