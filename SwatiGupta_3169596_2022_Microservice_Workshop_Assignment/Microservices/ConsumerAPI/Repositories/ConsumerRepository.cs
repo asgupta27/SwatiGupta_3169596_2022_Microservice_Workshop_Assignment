@@ -10,10 +10,7 @@ namespace ConsumerAPI
     /// </summary>
     public class ConsumerRepository
     {
-        private readonly List<Consumer> consumers;
-        public ConsumerRepository()
-        {
-            consumers = new List<Consumer>
+        private static readonly List<Consumer> consumers = new List<Consumer>
             {
                 new Consumer { Id = 1, Name = "Test Consumer", Username = "Consumer1", EmailId = "Consumer1@test.com" },
                 new Consumer { Id = 2, Name = "Sample Consumer", Username = "Consumer2", EmailId = "Consumer2@test.com" },
@@ -21,6 +18,9 @@ namespace ConsumerAPI
                 new Consumer { Id = 4, Name = "Test Consumer3", Username = "Consumer4", EmailId = "Consumer4@test.com" },
                 new Consumer { Id = 5, Name = "Test Consumer4", Username = "Consumer5", EmailId = "Consumer5@test.com" },
             };
+        public ConsumerRepository()
+        {
+
         }
 
         /// <summary>
@@ -53,7 +53,7 @@ namespace ConsumerAPI
             var maxId = consumers.Select(x => x.Id).Max();
             consumer.Id = maxId;
             consumers.Add(consumer);
-            return  Task.FromResult(consumer);
+            return Task.FromResult(consumer);
         }
     }
 }
