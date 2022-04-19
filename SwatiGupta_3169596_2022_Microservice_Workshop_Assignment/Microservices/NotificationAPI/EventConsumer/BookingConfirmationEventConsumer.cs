@@ -19,10 +19,12 @@ namespace NotificationAPI
             if(obj != null)
             {
                 //send email to consumer
-                Console.WriteLine($" Dear {obj.ServiceProviderName} , Booking has been confirmed! Details of Consumer - Name :- {obj.ConsumerName}, Contactno - {obj.ContactNo}");
+                //logging instead of sending email
+                Console.WriteLine($" Dear {obj.ServiceProviderName} , Booking has been confirmed! Details of Consumer - Name :- {obj.ConsumerName}, Contactno - {obj.ContactNo} and Address - {obj.Address}");
 
                 //send email to provider
-                Console.WriteLine($" Dear {obj.ConsumerName} , Booking has been confirmed! Details of Service Provider - Name :- {obj.ServiceProviderName}, Contactno - {obj.ServiceProviderAddress}");
+                //logging instead of sending email
+                Console.WriteLine($" Dear {obj.ConsumerName} , Booking has been confirmed! Details of Service Provider - Name :- {obj.ServiceProviderName}, Contactno - {obj.ServiceProviderContactNo}");
             }
         }
     }
