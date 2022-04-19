@@ -76,7 +76,9 @@ namespace BookingAPI
                 if (bookingRequestResponse.IsAccepted)
                 {
                     Console.WriteLine($"Is Booking accepted - {bookingRequestResponse.IsAccepted.ToString()}");
-                    var eventMessage = _mapper.Map<BookingConfirmationEvent>(bookingRequestResponse);
+                    var booking = _mapper.Map<Booking>(bookingRequestResponse);
+                     booking = await bookingService.UpdateServiceProvidersDeatils(booking);                  
+                    var eventMessage = _mapper.Map<BookingConfirmationEvent>(booking);                   
                     await _publishEndpoint.Publish<BookingConfirmationEvent>(eventMessage);
                 }
                 return Accepted();

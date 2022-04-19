@@ -16,8 +16,8 @@ namespace BookingAPI
         /// <summary>
         /// Create booking
         /// </summary>
-        /// <param name="booking"></param>
-        /// <returns></returns>
+        /// <param name="booking">The booking model</param>
+        /// <returns>Return created booking order</returns>
         public Task<Booking> CreateBooking(Booking booking)
         {            
             var bookingObj = _bookingRepository.CreateBooking(booking);
@@ -29,12 +29,22 @@ namespace BookingAPI
         }
 
         /// <summary>
-        /// Get all bookings list
+        /// Get all booking list
         /// </summary>
-        /// <returns></returns>
+        /// <returns>Returns booking list</returns>
         public Task<IList<Booking>> GetBookings()
         {
             return _bookingRepository.GetBookings();
+        }
+
+        /// <summary>
+        /// Update service providers details
+        /// </summary>
+        /// <param name="bookingId">The booking model</param>
+        /// <returns>Returns the updated booking obj</returns>
+        public Task<Booking> UpdateServiceProvidersDeatils(Booking booking)
+        {
+            return _bookingRepository.UpdateServiceProvidersDeatils(booking);
         }
     }
 }

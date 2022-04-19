@@ -13,6 +13,9 @@ namespace BookingAPI.Mappings
 
             CreateMap<BookingRequestResponse, BookingConfirmationEvent>()
             .ReverseMap();
+
+            CreateMap<BookingRequestResponse, Booking>()
+           .ReverseMap();
         }
     }
 }
