@@ -51,7 +51,7 @@ namespace ConsumerAPI
         public Task<Consumer> CreateConsumer(Consumer consumer)
         {
             var maxId = consumers.Select(x => x.Id).Max();
-            consumer.Id = maxId;
+            consumer.Id = maxId+1;
             consumers.Add(consumer);
             return Task.FromResult(consumer);
         }

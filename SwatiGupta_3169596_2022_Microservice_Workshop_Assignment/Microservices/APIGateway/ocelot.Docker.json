@@ -15,6 +15,13 @@
       "UpstreamHttpMethod": [ "GET" ]
     },
     {
+      "ServiceName": "ConsumerAPI",
+      "DownstreamPathTemplate": "/api/v1/consumer",
+      "DownstreamScheme": "http",
+      "UpstreamPathTemplate": "/addConsumer",
+      "UpstreamHttpMethod": [ "POST" ]
+    },
+    {
       "ServiceName": "AdminAPI",
       "DownstreamPathTemplate": "/api/v1/admin/service/{id}",
       "DownstreamScheme": "http",
@@ -29,11 +36,25 @@
       "UpstreamHttpMethod": [ "GET" ]
     },
     {
-      "ServiceName": "ServiceProviderAPI",
-      "DownstreamPathTemplate": "/api/v1/serviceprovider?{queryparam}",
+      "ServiceName": "AdminAPI",
+      "DownstreamPathTemplate": "/api/v1/admin/addservice",
       "DownstreamScheme": "http",
-      "UpstreamPathTemplate": "/serviceprovider?{queryparam}",
-      "UpstreamHttpMethod": [ "GET" ]
+      "UpstreamPathTemplate": "/addService",
+      "UpstreamHttpMethod": [ "POST" ]
+    },
+    {
+      "ServiceName": "ServiceProviderAPI",
+      "DownstreamPathTemplate": "/api/v1/serviceprovider/SendBookingRequest",
+      "DownstreamScheme": "http",
+      "UpstreamPathTemplate": "/sendBookingRequest",
+      "UpstreamHttpMethod": [ "POST" ]
+    },
+    {
+      "ServiceName": "ServiceProviderAPI",
+      "DownstreamPathTemplate": "/api/v1/serviceprovider/ServiceProvider",
+      "DownstreamScheme": "http",
+      "UpstreamPathTemplate": "/addprovider",
+      "UpstreamHttpMethod": [ "POST" ]
     },
     {
       "ServiceName": "BookingAPI",
@@ -47,7 +68,14 @@
       "DownstreamPathTemplate": "/api/v1/booking/bookings",
       "DownstreamScheme": "http",
       "UpstreamPathTemplate": "/bookings",
-      "UpstreamHttpMethod": [ "GET"]
+      "UpstreamHttpMethod": [ "GET" ]
+    },
+    {
+      "ServiceName": "BookingAPI",
+      "DownstreamPathTemplate": "/api/v1/booking/bookingresponse",
+      "DownstreamScheme": "http",
+      "UpstreamPathTemplate": "/bookingresponse",
+      "UpstreamHttpMethod": [ "POST" ]
     }
   ],
   "GlobalConfiguration": {
