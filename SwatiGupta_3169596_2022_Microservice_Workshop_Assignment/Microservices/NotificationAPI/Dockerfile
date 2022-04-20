@@ -3,7 +3,7 @@
 
 FROM mcr.microsoft.com/dotnet/sdk:5.0 AS build
 WORKDIR /app
-Copy /BookingAPI ./
+Copy /NotificationAPI ./
 Copy /EventBus.Message ./
 EXPOSE 80
 
