@@ -2,7 +2,7 @@
 
 FROM mcr.microsoft.com/dotnet/sdk:5.0 AS build
 WORKDIR /app
-Copy ./ ./
+Copy /BookingAPI ./
 EXPOSE 80
 
 RUN dotnet restore "./BookingAPI.csproj"
