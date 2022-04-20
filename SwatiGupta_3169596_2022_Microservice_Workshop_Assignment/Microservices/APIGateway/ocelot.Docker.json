@@ -51,7 +51,7 @@
     },
     {
       "ServiceName": "ServiceProviderAPI",
-      "DownstreamPathTemplate": "/api/v1/serviceprovider/ServiceProvider",
+      "DownstreamPathTemplate": "/api/v1/ServiceProvider",
       "DownstreamScheme": "http",
       "UpstreamPathTemplate": "/addprovider",
       "UpstreamHttpMethod": [ "POST" ]
@@ -72,7 +72,7 @@
     },
     {
       "ServiceName": "BookingAPI",
-      "DownstreamPathTemplate": "/api/v1/booking/bookingresponse",
+      "DownstreamPathTemplate": "/api/v1/Booking/bookingresponse",
       "DownstreamScheme": "http",
       "UpstreamPathTemplate": "/bookingresponse",
       "UpstreamHttpMethod": [ "POST" ]
