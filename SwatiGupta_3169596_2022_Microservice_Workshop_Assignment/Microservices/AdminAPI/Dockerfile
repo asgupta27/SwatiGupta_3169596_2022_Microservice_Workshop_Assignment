@@ -2,7 +2,7 @@
 
 FROM mcr.microsoft.com/dotnet/sdk:5.0 AS build
 WORKDIR /app
-COPY app .
+COPY *.csproj .
 
 RUN dotnet restore 
 RUN dotnet publish  -c Release -o /out
