@@ -5,8 +5,8 @@ WORKDIR /app
 Copy ./ ./
 EXPOSE 80
 
-RUN dotnet restore "/BookingAPI/BookingAPI.csproj"
-RUN dotnet publish "/BookingAPI/BookingAPI.csproj" -c Release -o /out
+RUN dotnet restore "./BookingAPI.csproj"
+RUN dotnet publish "./BookingAPI.csproj" -c Release -o /out
 
 FROM mcr.microsoft.com/dotnet/aspnet:5.0 AS final
 
